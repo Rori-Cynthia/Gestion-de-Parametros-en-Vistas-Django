@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}Ingreso de Productos{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center mb-3">Ingreso de Productos</h2>
+    <form method="POST" class="container">
+        {% csrf_token %}
+        <div class="row justify-content-center">
+            <div class="col-12 col-sm-10 col-md-8 col-lg-7 col-xl-6">
+                <div class="mb-2">
+                    <label for="name" class="form-label">{{ form.name.label }}</label>
+                    {{ form.name|add_class:"form-control" }}
+                    {% for error in form.name.errors %}
+                        <div class="text-danger small">{{ error }}</div>
+                    {% endfor %}
+                </div>
+                <div class="mb-3">
+                    <label for="price" class="form-label">{{ form.price.label }}</label>
+                    {{ form.price|add_class:"form-control" }}
+                    {% for error in form.price.errors %}
+                        <div class="text-danger small">{{ error }}</div>
+                    {% endfor %}
+                </div>
+                <div class="mb-2">
+                    <label for="description" class="form-label">{{ form.description.label }}</label>
+                    {{ form.description|add_class:"form-control"|attr:"rows:4" }}
+                    {% for error in form.description.errors %}
+                        <div class="text-danger small">{{ error }}</div>
+                    {% endfor %}
+                </div>
+                <div class="mb-2">
+                    <label for="expiration_date" class="form-label">{{ form.expiration_date.label }}</label>
+                    {{ form.expiration_date|attr:"type:date"|add_class:"form-control" }}
+                    {% for error in form.expiration_date.errors %}
+                        <div class="text-danger small">{{ error }}</div>
+                    {% endfor %}
+                </div>
+                {% if form.non_field_errors %}
+                <div class="text-danger text-center mb-2">
+                    {% for error in form.non_field_errors %}
+                        <div class="error">{{ error }}</div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                <div class="text-center mt-3">
+                    <button type="submit" class="btn btn-primary w-100">Enviar</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+{% endblock %}

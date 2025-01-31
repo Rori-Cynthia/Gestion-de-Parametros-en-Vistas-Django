@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Detalles del producto{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Detalles del Producto</h2>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Descripción</th>
+                <th scope="col">Precio</th>
+                <th scope="col">Vencimiento</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ product.name }}</td>
+                <td>{{ product.description }}</td>
+                <td>{{ product.price }}</td>
+                <td>{{ product.expiration_date }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+{% endblock %}
